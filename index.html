@@ -413,7 +413,309 @@
 	<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
 	<script src="assets/js/jquery.validate.min.js"></script>
 	<script type="text/javascript">
-	'use strict';document.addEventListener('DOMContentLoaded',function(){var b,c,d,f,g,h='0',j='0',k='0',l='0',m='0',n=0,o,p,q=document.getElementById('send'),r='keyy91JVw4nn9lwqH',s='appWeyp3UlQHHV5By',t=function(w){var x=document.getElementById('stock-'+w.fields.Name);if(15<w.fields.stock)for(var y=1;16>y;y++)this.option=document.createElement('option'),this.option.innerText=y,this.option.value=y,x.append(this.option);else for(var y=0;y<w.fields.stock;y++)this.option=document.createElement('option'),this.option.innerText=y+1,this.option.value=y+1,x.append(this.option)},u=function(){o=parseFloat(m)+parseFloat(h)+parseFloat(j)+parseFloat(k)+parseFloat(l),7>o?($('#summay-deliveryfee').text('50'),$('#deliveryFree').text('\uD83D\uDC4D Order 7 or more yogurts to have a free delivery'),p=o*f+parseFloat(d)-n*g):($('#summay-deliveryfee').text('free'),$('#deliveryFree').text(''),p=o*f-n*g),$('#summay-Price').text(p)};$('#stock-Mango').on('change',function(){h=this.value,$('#summary-Mango').text(this.value),u()}),$('#stock-Raspberry').on('change',function(){j=this.value,$('#summary-Raspberry').text(this.value),u()}),$('#stock-Strawberry').on('change',function(){k=this.value,$('#summary-Strawberry').text(this.value),u()}),$('#stock-Unsweetened').on('change',function(){m=this.value,$('#summary-Unsweetened').text(this.value),u()}),$('#stock-Sweetened').on('change',function(){l=this.value,$('#summary-Sweetened').text(this.value),u()}),$('#jarrenb').on('change',function(){n=this.value,$('#summary-Jarre').text(this.value),u()}),q.addEventListener('click',function(){v()});var v=function(){var w=document.querySelectorAll('input[name$="firstname"]')[0].value,x=document.querySelectorAll('input[name$="lastname"]')[0].value,y=document.querySelectorAll('input[name$="email"]')[0].value,z=document.querySelectorAll('input[name$="phone"]')[0].value,A=document.getElementById('deliveryTime'),B=A.options[A.selectedIndex].value,C=document.getElementById('barangay'),D=C.options[C.selectedIndex].value,E=document.getElementById('district'),F=E.options[E.selectedIndex].value,G=document.querySelectorAll('input[name$="street"]')[0].value,H=document.querySelectorAll('input[name$="housenb"]')[0].value,I=document.querySelectorAll('input[name$="bill"]')[0].value,J=document.querySelectorAll('input[name$="floor"]')[0].value,K={fields:{'First Name':w,'Total Amount':parseFloat(p),'Last Name':x,Mango:parseFloat(h),Raspberry:parseFloat(j),Sweetened:parseFloat(l),Strawberry:parseFloat(k),Email:y,Phone:z,Unsweetened:parseFloat(m),'Jarre to return':parseFloat(n),'Delivery Time':B,District:F,Barangay:D,Street:G,'House number':H,'Delivery Date':c,'Change for':I,'Floor / Unit / Room#':J}};console.log(K.fields.Mango),SaveOrder(K)};SaveOrder=function SaveOrder(w){console.log(w.fields.Mango);fetch('https://api.airtable.com/v0/'+s+'/Customer',{method:'POST',headers:new Headers({Authorization:'Bearer '+r,'Content-Type':'application/json'}),body:JSON.stringify(w)}).then(function(y){return y.json()}).then(function(y){console.log(y),console.log(y.fields.Mango),0<y.fields.Mango&&UdpateStock(b[0],y.fields.Mango),0<y.fields.Strawberry&&UdpateStock(b[1],y.fields.Strawberry),0<y.fields.Raspberry&&UdpateStock(b[2],y.fields.Raspberry),0<y.fields.Sweetened&&UdpateStock(b[3],y.fields.Sweetened),0<y.fields.Unsweetened&&UdpateStock(b[4],y.fields.Unsweetened),setTimeout(function(){document.getElementsByClassName('wizard-card')[0].style.display='none',document.getElementsByClassName('footer')[0].style.display='none',document.getElementsByClassName('order-confirm')[0].style.display='block'},1e3)}).catch(function(y){console.error(y)})},UdpateStock=function UdpateStock(w,x){w.fields.stock-=x;var y='https://api.airtable.com/v0/'+s+'/Stock/'+w.id;console.log(w),console.log(w.fields),console.log(y);var z={fields:w.fields};fetch(y,{method:'PUT',headers:new Headers({Authorization:'Bearer '+r,'Content-Type':'application/json'}),body:JSON.stringify(z)}).then(function(A){return A.json()}).then(function(A){console.log(A)}).catch(function(A){console.error(A)})},fetchProduct=function fetchProduct(){fetch('https://api.airtable.com/v0/'+s+'/Stock?maxRecords=10&view=Grid%20view',{method:'get',headers:new Headers({Authorization:'Bearer '+r})}).then(function(x){return x.json()}).then(function(x){b=x.records,console.log(b);for(var y=0;y<b.length;y++)t(b[y])}).catch(function(x){console.error(x)})},fetchInfo=function fetchInfo(){fetch('https://api.airtable.com/v0/'+s+'/Info?maxRecords=10&view=Grid%20view',{method:'get',headers:new Headers({Authorization:'Bearer '+r})}).then(function(x){return x.json()}).then(function(x){document.getElementById('nextDelivery').innerText=x.records[0].fields.info,document.getElementById('datedelivery').innerText=x.records[0].fields.info,c=x.records[0].fields.info,f=x.records[1].fields.info,g=x.records[2].fields.info,d=x.records[3].fields.info}).catch(function(x){console.error(x)})},fetchProduct(),fetchInfo()});
+	document.addEventListener("DOMContentLoaded", function(e) {
+		var stock;
+		var deliveryDate;
+		var deliveryPrice;
+		var yogourtPrice;
+		var jarrePrice;
+		var mango = '0';
+		var raspberry = '0';
+		var strawberry = '0';
+		var sweetened = '0';
+		var unsweetened = '0';
+		var jarre = 0;
+		var totalProduct;
+		var totalPrice;
+		var send = document.getElementById('send');
+		var apiKey = "keyy91JVw4nn9lwqH";
+		var baseid = "appWeyp3UlQHHV5By";
+
+		var initStock = function(product) {
+			var stock = document.getElementById('stock-'+product.fields.Name)
+			// console.log(stock);
+			if (product.fields.stock > 15) {
+				for (var i = 1; i < 16; i++) {
+					this.option = document.createElement('option')
+					this.option.innerText = i;
+					this.option.value = i;
+					stock.append(this.option)
+				}
+			}else {
+				// console.log( product.fields.stock);
+				for (var i = 0; i < product.fields.stock; i++) {
+					this.option = document.createElement('option')
+					this.option.innerText = i +1;
+					this.option.value = i +1;
+					stock.append(this.option)
+				}
+			}
+		}
+
+
+
+		var calculateTotal = function() {
+			totalProduct = parseFloat(unsweetened)+ parseFloat(mango)+ parseFloat(raspberry) + parseFloat(strawberry) + parseFloat(sweetened);
+			if (totalProduct < 7) {
+				$('#summay-deliveryfee').text('50');
+				$('#deliveryFree').text('👍 Order 7 or more yogurts to have a free delivery');
+
+				totalPrice = (totalProduct * yogourtPrice) + parseFloat(deliveryPrice) - (jarre*jarrePrice)
+			}else {
+				$('#summay-deliveryfee').text('free');
+				$('#deliveryFree').text('');
+				totalPrice = (totalProduct * yogourtPrice) - (jarre*jarrePrice)
+
+			}
+			// console.log(totalPrice);
+			$('#summay-Price').text(totalPrice)
+
+		}
+
+		$('#stock-Mango').on('change', function() {
+			// console.log(this.value);
+			mango = this.value;
+			$('#summary-Mango').text(this.value);
+			calculateTotal();
+
+		});
+		$('#stock-Raspberry').on('change', function() {
+			raspberry = this.value;
+			$('#summary-Raspberry').text(this.value);
+			calculateTotal();
+		});
+		$('#stock-Strawberry').on('change', function() {
+			strawberry = this.value;
+			$('#summary-Strawberry').text(this.value);
+			calculateTotal();
+		});
+		$('#stock-Unsweetened').on('change', function() {
+			unsweetened = this.value;
+			$('#summary-Unsweetened').text(this.value);
+			calculateTotal();
+		});
+		$('#stock-Sweetened').on('change', function() {
+			sweetened = this.value;
+			$('#summary-Sweetened').text(this.value);
+			calculateTotal();
+		});
+		$('#jarrenb').on('change', function() {
+			jarre = this.value;
+			$('#summary-Jarre').text(this.value);
+			calculateTotal();
+		});
+
+		send.addEventListener('click',function () {
+			sendOrder();
+		});
+
+
+		var sendOrder = function() {
+
+			// Customer info
+
+			var firstname = document.querySelectorAll('input[name$="firstname"]')[0].value;
+			var lastname = document.querySelectorAll('input[name$="lastname"]')[0].value;
+			var email = document.querySelectorAll('input[name$="email"]')[0].value;
+			var phone = document.querySelectorAll('input[name$="phone"]')[0].value;
+
+			// Delivery Info
+
+			var deliveryTimeselect = document.getElementById("deliveryTime");
+			var deliveryTime = deliveryTimeselect.options[deliveryTimeselect.selectedIndex].value;
+			var barangayselect = document.getElementById("barangay");
+			var barangay = barangayselect.options[barangayselect.selectedIndex].value;
+			var districtselect = document.getElementById("district");
+			var district = districtselect.options[districtselect.selectedIndex].value;
+			var street = document.querySelectorAll('input[name$="street"]')[0].value;
+			var housenb = document.querySelectorAll('input[name$="housenb"]')[0].value;
+			var bill = document.querySelectorAll('input[name$="bill"]')[0].value;
+			var floor = document.querySelectorAll('input[name$="floor"]')[0].value;
+
+		var order = {"fields":
+						{
+						    "First Name": firstname,
+						    "Total Amount": parseFloat(totalPrice),
+						    "Last Name": lastname,
+						    "Mango": parseFloat(mango),
+						    "Raspberry": parseFloat(raspberry),
+						    "Sweetened": parseFloat(sweetened),
+						    "Strawberry": parseFloat(strawberry),
+						    "Email": email,
+						    "Phone": phone,
+						    "Unsweetened": parseFloat(unsweetened),
+						    "Jarre to return": parseFloat(jarre),
+						    "Delivery Time": deliveryTime,
+						    "District": district,
+						    "Barangay": barangay,
+						    "Street": street,
+						    "House number": housenb,
+							"Delivery Date": deliveryDate,
+							"Change for": bill,
+							"Floor / Unit / Room#": floor ,
+					  	}
+					}
+
+			console.log(order.fields.Mango);
+			SaveOrder(order);
+
+
+
+		}
+
+		SaveOrder = (order) =>{
+			console.log(order.fields.Mango);
+
+
+			var url = 'https://api.airtable.com/v0/'+baseid+'/Customer'
+
+
+			fetch(url,{
+			   method: 'POST',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey,
+				 'Content-Type': 'application/json',
+			}),
+			body: JSON.stringify(order)
+			})
+			.then((response) => response.json())
+			.then((product) => {
+
+				console.log(product);
+				console.log(product.fields.Mango);
+
+				if (product.fields.Mango > 0) {
+					UdpateStock(stock[0],product.fields.Mango);
+				}
+				if (product.fields.Strawberry > 0) {
+					UdpateStock(stock[1],product.fields.Strawberry);
+				}
+				if (product.fields.Raspberry > 0) {
+					UdpateStock(stock[2],product.fields.Raspberry);
+				}
+				if (product.fields.Sweetened > 0) {
+					UdpateStock(stock[3],product.fields.Sweetened);
+				}
+				if (product.fields.Unsweetened > 0) {
+					UdpateStock(stock[4],product.fields.Unsweetened);
+				}
+
+				setTimeout(function () {
+					document.getElementsByClassName('wizard-card')[0].style.display = 'none';
+					document.getElementsByClassName('footer')[0].style.display = 'none';
+					document.getElementsByClassName('order-confirm')[0].style.display = 'block';
+
+
+				}, 1000);
+
+
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+
+		}
+
+		UdpateStock = (yogourt,amount) =>{
+			yogourt.fields.stock = yogourt.fields.stock - amount;
+
+			var url = 'https://api.airtable.com/v0/'+baseid+'/Stock/'+yogourt.id;
+			console.log(yogourt);
+			console.log(yogourt.fields);
+			console.log(url);
+
+			var yogourtUpdate = {
+			  	"fields": yogourt.fields
+			 }
+
+			fetch(url,{
+			   method: 'PUT',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey ,
+				 'Content-Type': 'application/json',
+			}),
+			body: JSON.stringify(yogourtUpdate)
+			})
+			.then((response) => response.json())
+			.then((product) => {
+				console.log(product)
+
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		}
+
+		fetchProduct = () =>{
+
+
+			let url = 'https://api.airtable.com/v0/'+baseid+'/Stock?maxRecords=10&view=Grid%20view'
+
+
+			fetch(url,{
+			   method: 'get',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey,
+			}),
+			})
+			.then((response) => response.json())
+			.then((product) => {
+				// console.log(product.records)
+				stock = product.records;
+				console.log(stock);
+
+				for (var i = 0; i < stock.length; i++) {
+					initStock(stock[i]);
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		}
+		fetchInfo = () =>{
+
+			let url = 'https://api.airtable.com/v0/'+baseid+'/Info?maxRecords=10&view=Grid%20view'
+
+
+			fetch(url,{
+			   method: 'get',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey,
+			}),
+			})
+			.then((response) => response.json())
+			.then((delivery) => {
+				// console.log(delivery.records)
+				// console.log(delivery.records[0].fields.Date);
+				document.getElementById('nextDelivery').innerText = delivery.records[0].fields.info;
+				document.getElementById('datedelivery').innerText = delivery.records[0].fields.info;
+				deliveryDate = delivery.records[0].fields.info;
+				yogourtPrice = delivery.records[1].fields.info;
+				jarrePrice = delivery.records[2].fields.info;
+				deliveryPrice = delivery.records[3].fields.info;
+
+				// console.log(deliveryDate ,yogourtPrice, jarrePrice);
+				// localStorage.setItem('areas', JSON.stringify(product.records));
+
+				// for (var i = 0; i < stock.length; i++) {
+				// 	initStock(stock[i]);
+				// }
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		}
+
+		fetchProduct();
+		fetchInfo();
+
+
+
+	});
 	</script>
 
 
