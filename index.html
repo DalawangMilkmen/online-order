@@ -4,11 +4,11 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Online orders - Dalawang Milkmen</title>
-	<meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
-<meta property="og:type"               content="website" />
-<meta property="og:title"              content="Online orders - Dalawang Milkmen" />
-<meta property="og:description"        content="Order our yogourts online, we deliver them to your doorstep" />
-<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+	<meta property="og:url"                content="https://dalawangmilkmen.github.io/online-order/" />
+	<meta property="og:type"               content="website" />
+	<meta property="og:title"              content="Online orders - Dalawang Milkmen" />
+	<meta property="og:description"        content="Order our yogourts online, we deliver them to your doorstep" />
+	<meta property="og:image"              content="https://scontent.fmnl3-2.fna.fbcdn.net/v/t1.0-9/45591169_292436061376729_5597502775182229504_n.png?_nc_cat=105&_nc_ht=scontent.fmnl3-2.fna&oh=714f3cacc8b681ce777ac51dcb021d90&oe=5CEA02BB" />
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -34,7 +34,7 @@
 			opacity: .4!important;
 		}
 	</style>
-	<div class="image-container set-full-height" style="background-image: url('assets/img/dmm/20181122_143204.jpg')">
+	<div class="image-container set-full-height" style="background-image: url('assets/img/dmm/background-dmm.jpg')">
 	    <!--   Creative Tim Branding   -->
 	    <a href="https://www.facebook.com/DalawangMilkmen/" target="_blank">
 	         <div class="logo-container">
@@ -293,14 +293,12 @@
 		                                        	<label class="control-label">House Number / Building Name</label>
 													<input name="housenb" type="text" class="form-control">
 		                                    	</div>
-		                                    	<!-- <div class="form-group label-floating">
-		                                        	<label class="control-label">House Number/Building Name</label>
-		                                        	<select class="form-control">
-		                                            	<option disabled="" selected=""></option>
-		                                            	<option>Yes</option>
-		                                            	<option>No </option>
-		                                        	</select>
-		                                    	</div> -->
+	                                    	</div>
+		                                    <div class="col-sm-5 ">
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Floor / Unit / Room#<small>(optional)</small></label>
+													<input name="floor" type="text" class="form-control">
+		                                    	</div>
 	                                    	</div>
 		                                </div>
 		                            </div>
@@ -532,6 +530,7 @@
 			var street = document.querySelectorAll('input[name$="street"]')[0].value;
 			var housenb = document.querySelectorAll('input[name$="housenb"]')[0].value;
 			var bill = document.querySelectorAll('input[name$="bill"]')[0].value;
+			var floor = document.querySelectorAll('input[name$="floor"]')[0].value;
 
 		var order = {"fields":
 						{
@@ -553,6 +552,7 @@
 						    "House number": housenb,
 							"Delivery Date": deliveryDate,
 							"Change for": bill,
+							"Floor / Unit / Room#": floor ,
 					  	}
 					}
 
