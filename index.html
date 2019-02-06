@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Online orders - Dalawang Milkmen</title>
+	<meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content="Online orders - Dalawang Milkmen" />
+<meta property="og:description"        content="Order our yogourts online, we deliver them to your doorstep" />
+<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/dmm/dmm-favicon.png" />
+	<link rel="icon" type="image/png" href="assets/img/dmm/dmm-favicon.png" />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!-- CSS Files -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/css/material-bootstrap-wizard.css" rel="stylesheet" />
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link href="assets/css/demo.css" rel="stylesheet" />
+</head>
+
+<body>
+	<style media="screen">
+		.image-container:before{
+			opacity: .4!important;
+		}
+	</style>
+	<div class="image-container set-full-height" style="background-image: url('assets/img/dmm/20181122_143204.jpg')">
+	    <!--   Creative Tim Branding   -->
+	    <a href="https://www.facebook.com/DalawangMilkmen/" target="_blank">
+	         <div class="logo-container">
+	            <div class="">
+	                <img style='height:80px;' src="assets/img/dmm/dmm-logo-outline.png">
+	            </div>
+	            <!-- <div class="brand">
+	                Dalawang Milkmen
+	            </div> -->
+	        </div>
+	    </a>
+
+		<!--  Made With Material Kit  -->
+		<!-- <a href="http://demos.creative-tim.com/material-kit/index.html?ref=material-bootstrap-wizard" class="made-with-mk">
+			<div class="brand">MK</div>
+			<div class="made-with">Made with <strong>Material Kit</strong></div>
+		</a> -->
+
+	    <!--   Big container   -->
+	    <div class="container">
+	        <div class="row">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <!--      Wizard container        -->
+		            <div class="wizard-container">
+		                <div class="card wizard-card" data-color="blue" id="wizard">
+			                <form action="" method="">
+			                <!--        You can switch " data-color="rose" "  with one of the next bright colors: "blue", "green", "orange", "purple"        -->
+
+		                    	<div class="wizard-header">
+		                        	<h3 class="wizard-title">
+		                        		Dalawang Milkmen Deliveries
+		                        	</h3>
+									<h5>🗓 Next delivery date: <strong><span style='' id='nextDelivery'></span></strong></h5>
+									<p style="text-align:center">
+										<br>
+										We curently deliver 🛵 only in Makati and BGC 😁
+									</p>
+		                    	</div>
+								<div class="wizard-navigation">
+									<ul>
+			                            <li><a href="#order" data-toggle="tab">Your Order </a></li>
+			                            <li><a href="#contact" data-toggle="tab">Contact</a></li>
+			                            <li><a href="#delivery" data-toggle="tab">Delivery Info</a></li>
+			                            <li><a href="#summary" data-toggle="tab">Summary</a></li>
+			                        </ul>
+								</div>
+
+		                        <div class="tab-content">
+		                            <div class="tab-pane" id="order">
+		                            	<div class="row">
+		                                	<div class="col-sm-12">
+		                                    	<h4 class="info-text"> What would you like to order ?</h4>
+
+		                                	</div>
+		                                	<div class="col-sm-2 col-sm-offset-1">
+												<img src="assets/img/dmm/20190103-Dalawang-mango.jpg" style="width:100px;height:auto;"  alt="" />
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Mango</label>
+													<select id='stock-Mango' class="form-control">
+		                                            	<option disabled="" selected=""></option>
+		                                            	<option>0</option>
+
+		                                        	</select>
+		                                    	</div>
+		                                	</div>
+		                                	<div class="col-sm-2">
+												<img src="assets/img/dmm/20190103-Dalawang-raspberry.jpg" style="width:100px;height:auto;"  alt="" />
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Raspberry</label>
+													<select id='stock-Raspberry' class="form-control">
+		                                            	<option disabled="" selected=""></option>
+														<option>0</option>
+		                                        	</select>
+		                                    	</div>
+		                                	</div>
+		                                	<div class="col-sm-2">
+												<img src="assets/img/dmm/20190103-Dalawang-strawberry.jpg" style="width:100px;height:auto;"  alt="" />
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Strawberry</label>
+													<select id='stock-Strawberry' class="form-control">
+		                                            	<option disabled="" selected=""></option>
+														<option>0</option>
+
+		                                        	</select>
+		                                    	</div>
+		                                	</div>
+		                                	<div class="col-sm-2">
+												<img src="assets/img/dmm/20190103-Dalawang-sweetened.jpg" style="width:100px;height:auto;"  alt="" />
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Sweetened</label>
+													<select id='stock-Sweetened' class="form-control">
+		                                            	<option disabled="" selected=""></option>
+														<option>0</option>
+		                                        	</select>
+		                                    	</div>
+		                                	</div>
+											<div class="col-sm-2">
+												<img src="assets/img/dmm/20190103-Dalawang-unsweetened.jpg" style="width:100px;height:auto;"  alt="" />
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Unsweetened</label>
+													<select id='stock-Unsweetened' class="form-control">
+		                                            	<option disabled="" selected=""></option>
+														<option>0</option>
+
+		                                        	</select>
+		                                    	</div>
+		                                	</div>
+
+		                            	</div>
+										<p style="text-align:center">
+											Order 7 or more yogurts to have a free delivery
+										</p>
+		                            </div>
+		                            <div class="tab-pane" id="contact">
+		                                <h4 class="info-text">Give us your contact details </h4>
+										<div class="row">
+  		                                	<div class="col-sm-10 col-sm-offset-1">
+  												<div class="input-group">
+  													<span class="input-group-addon">
+  														<i class="material-icons">face</i>
+  													</span>
+  													<div class="form-group label-floating">
+  			                                          <label class="control-label">First Name <small>(required)</small></label>
+  			                                          <input name="firstname" type="text" class="form-control">
+  			                                        </div>
+  												</div>
+
+  												<div class="input-group">
+  													<span class="input-group-addon">
+  														<i class="material-icons">record_voice_over</i>
+  													</span>
+  													<div class="form-group label-floating">
+  													  <label class="control-label">Last Name <small>(required)</small></label>
+  													  <input name="lastname" type="text" class="form-control">
+  													</div>
+  												</div>
+  		                                	</div>
+  		                                	<div class="col-sm-10 col-sm-offset-1">
+  												<div class="input-group">
+  													<span class="input-group-addon">
+  														<i class="material-icons">email</i>
+  													</span>
+  													<div class="form-group label-floating">
+  			                                            <label class="control-label">Email <small>(required)</small></label>
+  			                                            <input name="email" type="email" class="form-control">
+  			                                        </div>
+  												</div>
+  		                                	</div>
+  		                                	<div class="col-sm-10 col-sm-offset-1">
+  												<div class="input-group">
+  													<span class="input-group-addon">
+  														<i class="material-icons">local_phone</i>
+  													</span>
+  													<div class="form-group label-floating">
+  			                                            <label class="control-label">Phone <small>(required)</small></label>
+  			                                            <input name="phone" type="text" class="form-control">
+  			                                        </div>
+  												</div>
+  		                                	</div>
+  		                            	</div>
+		                            </div>
+		                            <div class="tab-pane" id="delivery">
+		                                <h4 class="info-text">At what time would you like to be delivered on <span id='datedelivery'></span></h4>
+		                                <div class="row">
+		                                    <div class="col-sm-5 col-sm-offset-1">
+		                                      <div class="form-group label-floating">
+		                                        	<label class="control-label">Delivery Time<small>(required)</small></label>
+		                                        	<select id='deliveryTime'  name="deliveryTime"  class="form-control">
+		                                            	<option disabled="" selected=""></option>
+		                                            	<option>9am to 11am</option>
+		                                            	<option>11am to 1pm </option>
+		                                            	<option>1pm to 3pm </option>
+		                                            	<option>3pm to 5pm </option>
+		                                            	<option>5pm to 7pm </option>
+		                                            	<option>7pm to 9pm </option>
+		                                        	</select>
+		                                    	</div>
+		                                    </div>
+		                                    <div class="col-sm-5">
+		                                      <div class="form-group label-floating">
+		                                        	<label class="control-label">District name<small>(required)</small></label>
+		                                        	<select id='district' name="district"  class="form-control">
+		                                            	<option disabled="" selected=""></option>
+		                                            	<option>Makati</option>
+		                                            	<option>BGC</option>
+		                                        	</select>
+		                                    	</div>
+		                                    </div>
+		                                    <!-- <div class="col-sm-5">
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Is air conditioning included ?</label>
+		                                        	<select class="form-control">
+		                                            	<option disabled="" selected=""></option>
+		                                            	<option>Yes</option>
+		                                            	<option>No </option>
+		                                        	</select>
+		                                    	</div>
+		                                    </div> -->
+		                                    <div class="col-sm-5 col-sm-offset-1">
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Barangay name ?<small>(required)</small></label>
+		                                        	<select id="barangay" name="barangay" class="form-control">
+		                                    			<option disabled="" selected=""></option>
+
+		                                            	<option>Bangkal</option>
+		                                            	<option>Bel-Air</option>
+		                                            	<option>Carmona</option>
+		                                            	<option>Cembo</option>
+		                                            	<option>Comembo</option>
+		                                            	<option>Dasmariñas</option>
+		                                            	<option>East Rembo</option>
+		                                            	<option>Forbes Park</option>
+		                                            	<option>Fort Bonifacio</option>
+		                                            	<option>Guadalupe Nuevo</option>
+		                                            	<option>Guadalupe Viejo</option>
+														<option>Kasilawan</option>
+		                                            	<option>La Paz</option>
+		                                            	<option>Magallanes</option>
+		                                            	<option>Olympia</option>
+		                                            	<option>Palanan</option>
+		                                            	<option>Pembo</option>
+		                                            	<option>Pinagkaisahan</option>
+		                                            	<option>Pio del Pilar</option>
+		                                            	<option>Pitogo</option>
+		                                            	<option>Poblacion</option>
+		                                            	<option>Rizal</option>
+		                                            	<option>San Antonio</option>
+		                                            	<option>San Isidro</option>
+		                                            	<option>San Lorenzo</option>
+		                                            	<option>Santa Cruz</option>
+		                                            	<option>Singkamas</option>
+		                                            	<option>South Cembo</option>
+		                                            	<option>Tejeros</option>
+		                                            	<option>Urdaneta</option>
+		                                            	<option>Valenzuela</option>
+		                                            	<option>West Rembo</option>
+		                                        	</select>
+		                                    	</div>
+		                                    </div>
+		                                    <div class="col-sm-5">
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Street <small>(required)</small></label>
+													<input name="street" type="text" class="form-control">
+		                                    	</div>
+		                                    	<!-- <div class="form-group label-floating">
+		                                        	<label class="control-label">House Number/Building Name</label>
+		                                        	<select class="form-control">
+		                                            	<option disabled="" selected=""></option>
+		                                            	<option>Yes</option>
+		                                            	<option>No </option>
+		                                        	</select>
+		                                    	</div> -->
+	                                    	</div>
+		                                    <div class="col-sm-5 col-sm-offset-1">
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">House Number / Building Name</label>
+													<input name="housenb" type="text" class="form-control">
+		                                    	</div>
+		                                    	<!-- <div class="form-group label-floating">
+		                                        	<label class="control-label">House Number/Building Name</label>
+		                                        	<select class="form-control">
+		                                            	<option disabled="" selected=""></option>
+		                                            	<option>Yes</option>
+		                                            	<option>No </option>
+		                                        	</select>
+		                                    	</div> -->
+	                                    	</div>
+		                                </div>
+		                            </div>
+		                            <div class="tab-pane" id="summary">
+		                                <div class="row">
+		                                    <!-- <h4 class="info-text"> Drop us a small description. </h4> -->
+		                                    <div class="col-sm-4 col-sm-offset-1">
+												<div class="form-group label-floating">
+													<!-- <label class="control-label">Dalawang Milkmen Engagement</label> -->
+													<p class="description">Good news our glass jars are endlessly recyclable ♻️ and we give 5php per returned jars & lid!</p>
+												</div>
+		                                        <div class="form-group label-floating">
+		                                            <label class="control-label"># of jars to return</label>
+		                                            <input id='jarrenb' class="form-control" type="number" name="jarre" value="">
+
+		                                        </div>
+		                                    </div>
+		                                    <div class="col-sm-4">
+												<label class="control-label">Number of yogourt ordered</label>
+												<ul style="list-style: none;padding-left: 14px;">
+													<li style="color:#DEAA4E">
+														Mango : <span id="summary-Mango" style="float:right" >0</span>
+													</li>
+													<li style="color:#F17A92">
+														Strawberry :<span id="summary-Strawberry" style="float:right" >0</span>
+													 </li>
+													<li style="color:#D2373E">
+														Raspberry :<span id="summary-Raspberry" style="float:right" >0</span>
+													</li>
+													<li style="color:#7B9DCF">
+														Unsweetened :<span id="summary-Unsweetened" style="float:right" >0</span>
+													</li>
+													<li style="color:#99B9DD">
+														Sweetened : <span id="summary-Sweetened" style="float:right" >0</span>
+													</li>
+													<li>
+														Returned Jars<span id="summary-Jarre" style="float:right" >0</span>
+													</li>
+												</ul>
+												<hr>
+												<ul style="list-style: none;padding-left: 14px;">
+													<li>Delivery fee (php) : <span id='summay-deliveryfee' style="float:right">50</span></li>
+													<li><strong>Total Price (php) : <span id='summay-Price' style="float:right">0</span></strong></li>
+												</ul>
+
+
+
+		                                    </div>
+		                                    <div class="col-sm-3">
+		                                    	<div class="form-group label-floating">
+		                                            <label class="control-label">Payment methode</label>
+		                                            <p class="description">"Cash on delivery"</p>
+													<!-- <label class="control-label">Payment methode</label>
+													<input id='bill' class="form-control" type="text" name="bill" value=""> -->
+		                                        </div>
+		                                    	<div class="form-group label-floating">
+		                                            <!-- <h5 class="">Payment methode</h5>
+		                                            <p class="description">"Cash on delivery"</p> -->
+													<label class="control-label">Change for (php) :</label>
+													<input id='bill' class="form-control" type="text" name="bill" value="">
+		                                        </div>
+		                                    </div>
+		                                </div>
+										<p id='deliveryFree' style="text-align:center;">
+
+										</p>
+		                            </div>
+		                        </div>
+		                        <div class="wizard-footer">
+	                            	<div class="pull-right">
+	                                    <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='Next' />
+	                                    <input id='send' type='button' class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='Send Order' />
+	                                </div>
+	                                <div class="pull-left">
+	                                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
+	                                </div>
+		                            <div class="clearfix"></div>
+		                        </div>
+			                </form>
+		                </div>
+						<div class="order-confirm" style="display:none;text-align:center;">
+							<img src="assets/img/dmm/dmm-logo-outline.png" style='height:200px' alt="" />
+
+							<h2 style="color:#fff;">Thanks you, your order has been confirmed.</h2>
+							<h4 style="color:#fff;">You will recieve a confirmation email soon.</h4>
+
+						</div>
+		            </div> <!-- wizard container -->
+		        </div>
+	        </div> <!-- row -->
+	    </div> <!--  big container -->
+
+	    <div class="footer">
+	        <div class="container text-center">
+	             Freshly made with <i class="fa fa-heart heart"></i> in Lipa
+	        </div>
+	        <div class="container text-center">
+	             For exeptional orders <a href="https://www.messenger.com/t/DalawangMilkmen" target="_blank">contact us.</a>
+	        </div>
+	    </div>
+	</div>
+
+</body>
+	<!--   Core JS Files   -->
+	<script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/js/jquery.bootstrap.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Wizard -->
+	<script src="assets/js/material-bootstrap-wizard.js"></script>
+
+	<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+	<script src="assets/js/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(e) {
+		var stock;
+		var deliveryDate;
+		var deliveryPrice;
+		var yogourtPrice;
+		var jarrePrice;
+		var mango = '0';
+		var raspberry = '0';
+		var strawberry = '0';
+		var sweetened = '0';
+		var unsweetened = '0';
+		var jarre = 0;
+		var totalProduct;
+		var totalPrice;
+		var send = document.getElementById('send');
+		var apiKey = "keyy91JVw4nn9lwqH";
+		var baseid = "appWeyp3UlQHHV5By";
+
+		var initStock = function(product) {
+			var stock = document.getElementById('stock-'+product.fields.Name)
+			// console.log(stock);
+			if (product.fields.stock > 15) {
+				for (var i = 1; i < 16; i++) {
+					this.option = document.createElement('option')
+					this.option.innerText = i;
+					this.option.value = i;
+					stock.append(this.option)
+				}
+			}else {
+				// console.log( product.fields.stock);
+				for (var i = 0; i < product.fields.stock; i++) {
+					this.option = document.createElement('option')
+					this.option.innerText = i +1;
+					this.option.value = i +1;
+					stock.append(this.option)
+				}
+			}
+		}
+
+
+
+		var calculateTotal = function() {
+			totalProduct = parseFloat(unsweetened)+ parseFloat(mango)+ parseFloat(raspberry) + parseFloat(strawberry) + parseFloat(sweetened);
+			if (totalProduct < 7) {
+				$('#summay-deliveryfee').text('50');
+				$('#deliveryFree').text('👍 Order 7 or more yogurts to have a free delivery');
+
+				totalPrice = (totalProduct * yogourtPrice) + parseFloat(deliveryPrice) - (jarre*jarrePrice)
+			}else {
+				$('#summay-deliveryfee').text('free');
+				$('#deliveryFree').text('');
+				totalPrice = (totalProduct * yogourtPrice) - (jarre*jarrePrice)
+
+			}
+			// console.log(totalPrice);
+			$('#summay-Price').text(totalPrice)
+
+		}
+
+		$('#stock-Mango').on('change', function() {
+			// console.log(this.value);
+			mango = this.value;
+			$('#summary-Mango').text(this.value);
+			calculateTotal();
+
+		});
+		$('#stock-Raspberry').on('change', function() {
+			raspberry = this.value;
+			$('#summary-Raspberry').text(this.value);
+			calculateTotal();
+		});
+		$('#stock-Strawberry').on('change', function() {
+			strawberry = this.value;
+			$('#summary-Strawberry').text(this.value);
+			calculateTotal();
+		});
+		$('#stock-Unsweetened').on('change', function() {
+			unsweetened = this.value;
+			$('#summary-Unsweetened').text(this.value);
+			calculateTotal();
+		});
+		$('#stock-Sweetened').on('change', function() {
+			sweetened = this.value;
+			$('#summary-Sweetened').text(this.value);
+			calculateTotal();
+		});
+		$('#jarrenb').on('change', function() {
+			jarre = this.value;
+			$('#summary-Jarre').text(this.value);
+			calculateTotal();
+		});
+
+		send.addEventListener('click',function () {
+			sendOrder();
+		});
+
+
+		var sendOrder = function() {
+
+			// Customer info
+
+			var firstname = document.querySelectorAll('input[name$="firstname"]')[0].value;
+			var lastname = document.querySelectorAll('input[name$="lastname"]')[0].value;
+			var email = document.querySelectorAll('input[name$="email"]')[0].value;
+			var phone = document.querySelectorAll('input[name$="phone"]')[0].value;
+
+			// Delivery Info
+
+			var deliveryTimeselect = document.getElementById("deliveryTime");
+			var deliveryTime = deliveryTimeselect.options[deliveryTimeselect.selectedIndex].value;
+			var barangayselect = document.getElementById("barangay");
+			var barangay = barangayselect.options[barangayselect.selectedIndex].value;
+			var districtselect = document.getElementById("district");
+			var district = districtselect.options[districtselect.selectedIndex].value;
+			var street = document.querySelectorAll('input[name$="street"]')[0].value;
+			var housenb = document.querySelectorAll('input[name$="housenb"]')[0].value;
+			var bill = document.querySelectorAll('input[name$="bill"]')[0].value;
+
+		var order = {"fields":
+						{
+						    "First Name": firstname,
+						    "Total Amount": parseFloat(totalPrice),
+						    "Last Name": lastname,
+						    "Mango": parseFloat(mango),
+						    "Raspberry": parseFloat(raspberry),
+						    "Sweetened": parseFloat(sweetened),
+						    "Strawberry": parseFloat(strawberry),
+						    "Email": email,
+						    "Phone": phone,
+						    "Unsweetened": parseFloat(unsweetened),
+						    "Jarre to return": parseFloat(jarre),
+						    "Delivery Time": deliveryTime,
+						    "District": district,
+						    "Barangay": barangay,
+						    "Street": street,
+						    "House number": housenb,
+							"Delivery Date": deliveryDate,
+							"Change for": bill,
+					  	}
+					}
+
+			console.log(order.fields.Mango);
+			SaveOrder(order);
+
+
+
+		}
+
+		SaveOrder = (order) =>{
+			console.log(order.fields.Mango);
+
+
+			var url = 'https://api.airtable.com/v0/'+baseid+'/Customer'
+
+
+			fetch(url,{
+			   method: 'POST',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey,
+				 'Content-Type': 'application/json',
+			}),
+			body: JSON.stringify(order)
+			})
+			.then((response) => response.json())
+			.then((product) => {
+
+				console.log(product);
+				console.log(product.fields.Mango);
+
+				if (product.fields.Mango > 0) {
+					UdpateStock(stock[0],product.fields.Mango);
+				}
+				if (product.fields.Strawberry > 0) {
+					UdpateStock(stock[1],product.fields.Strawberry);
+				}
+				if (product.fields.Raspberry > 0) {
+					UdpateStock(stock[2],product.fields.Raspberry);
+				}
+				if (product.fields.Sweetened > 0) {
+					UdpateStock(stock[3],product.fields.Sweetened);
+				}
+				if (product.fields.Unsweetened > 0) {
+					UdpateStock(stock[4],product.fields.Unsweetened);
+				}
+
+				setTimeout(function () {
+					document.getElementsByClassName('wizard-card')[0].style.display = 'none';
+					document.getElementsByClassName('footer')[0].style.display = 'none';
+					document.getElementsByClassName('order-confirm')[0].style.display = 'block';
+
+
+				}, 1000);
+
+
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+
+		}
+
+		UdpateStock = (yogourt,amount) =>{
+			yogourt.fields.stock = yogourt.fields.stock - amount;
+
+			var url = 'https://api.airtable.com/v0/'+baseid+'/Stock/'+yogourt.id;
+			console.log(yogourt);
+			console.log(yogourt.fields);
+			console.log(url);
+
+			var yogourtUpdate = {
+			  	"fields": yogourt.fields
+			 }
+
+			fetch(url,{
+			   method: 'PUT',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey ,
+				 'Content-Type': 'application/json',
+			}),
+			body: JSON.stringify(yogourtUpdate)
+			})
+			.then((response) => response.json())
+			.then((product) => {
+				console.log(product)
+
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		}
+
+		fetchProduct = () =>{
+
+
+			let url = 'https://api.airtable.com/v0/'+baseid+'/Stock?maxRecords=10&view=Grid%20view'
+
+
+			fetch(url,{
+			   method: 'get',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey,
+			}),
+			})
+			.then((response) => response.json())
+			.then((product) => {
+				// console.log(product.records)
+				stock = product.records;
+				console.log(stock);
+
+				for (var i = 0; i < stock.length; i++) {
+					initStock(stock[i]);
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		}
+		fetchInfo = () =>{
+
+			let url = 'https://api.airtable.com/v0/'+baseid+'/Info?maxRecords=10&view=Grid%20view'
+
+
+			fetch(url,{
+			   method: 'get',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey,
+			}),
+			})
+			.then((response) => response.json())
+			.then((delivery) => {
+				// console.log(delivery.records)
+				// console.log(delivery.records[0].fields.Date);
+				document.getElementById('nextDelivery').innerText = delivery.records[0].fields.info;
+				document.getElementById('datedelivery').innerText = delivery.records[0].fields.info;
+				deliveryDate = delivery.records[0].fields.info;
+				yogourtPrice = delivery.records[1].fields.info;
+				jarrePrice = delivery.records[2].fields.info;
+				deliveryPrice = delivery.records[3].fields.info;
+
+				// console.log(deliveryDate ,yogourtPrice, jarrePrice);
+				// localStorage.setItem('areas', JSON.stringify(product.records));
+
+				// for (var i = 0; i < stock.length; i++) {
+				// 	initStock(stock[i]);
+				// }
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		}
+
+		fetchProduct();
+		fetchInfo();
+
+
+
+	})
+	</script>
+
+
+</html>
