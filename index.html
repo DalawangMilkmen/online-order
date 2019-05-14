@@ -204,12 +204,12 @@
 		                                        	<label class="control-label">Delivery Time <small>(required)</small></label>
 		                                        	<select id='deliveryTime'  name="deliveryTime"  class="form-control">
 		                                            	<option disabled="" selected=""></option>
-		                                            	<option>9am to 11am</option>
-		                                            	<option>11am to 1pm </option>
-		                                            	<option>1pm to 3pm </option>
+		                                            	<!-- <option>9am to 11am</option>
+		                                            	<option>11am to 1pm </option> -->
+		                                            	<!-- <option>1pm to 3pm </option>
 		                                            	<option>3pm to 5pm </option>
 		                                            	<option>5pm to 7pm </option>
-		                                            	<option>7pm to 8pm </option>
+		                                            	<option>7pm to 8pm </option> -->
 		                                        	</select>
 		                                    	</div>
 		                                    </div>
@@ -441,6 +441,7 @@
 		var totalProduct;
 		var totalPrice;
 		var send = document.getElementById('send');
+		var deliveryTime = document.getElementById('deliveryTime');
 		var apiKey = "keyy91JVw4nn9lwqH";
 		var baseid = "appWeyp3UlQHHV5By";
 
@@ -464,6 +465,32 @@
 					stock.append(this.option)
 				}
 			}
+		}
+		var initTime = function(time) {
+			console.log('init time: ',time);
+			// var stock = document.getElementById('stock-'+product.fields.Name)
+
+			this.option = document.createElement('option')
+			this.option.innerText = time.fields.horraire;
+			deliveryTime.append(this.option)
+
+			// console.log(stock);
+			// if (product.fields.stock > 15) {
+			// 	for (var i = 1; i < 16; i++) {
+			// 		this.option = document.createElement('option')
+			// 		this.option.innerText = i;
+			// 		this.option.value = i;
+			// 		stock.append(this.option)
+			// 	}
+			// }else {
+			// 	// console.log( product.fields.stock);
+			// 	for (var i = 0; i < product.fields.stock; i++) {
+			// 		this.option = document.createElement('option')
+			// 		this.option.innerText = i +1;
+			// 		this.option.value = i +1;
+			// 		stock.append(this.option)
+			// 	}
+			// }
 		}
 
 
@@ -689,6 +716,34 @@
 			});
 
 		}
+
+		fetchDeliveryTime = () =>{
+
+
+			let url = 'https://api.airtable.com/v0/'+baseid+'/horraire?maxRecords=10&view=Grid%20view'
+
+
+			fetch(url,{
+			   method: 'get',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey,
+			}),
+			})
+			.then((response) => response.json())
+			.then((times) => {
+				// console.log(product.records)
+				times = times.records;
+				console.log(times);
+
+				for (var i = 0; i < times.length; i++) {
+					initTime(times[i]);
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		}
 		fetchInfo = () =>{
 
 			let url = 'https://api.airtable.com/v0/'+baseid+'/Info?maxRecords=10&view=Grid%20view'
@@ -726,6 +781,7 @@
 
 		fetchProduct();
 		fetchInfo();
+		fetchDeliveryTime();
 
 
 
