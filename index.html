@@ -144,9 +144,9 @@
 		                                	</div>
 
 		                            	</div>
-										<p style="text-align:center">
+										<!-- <p style="text-align:center">
 											Order 7 or more yogurts to have a free delivery
-										</p>
+										</p> -->
 		                            </div>
 		                            <div class="tab-pane" id="contact">
 		                                <h4 class="info-text">Your contact details </h4>
@@ -405,9 +405,9 @@
 	    </div> <!--  big container -->
 
 	    <div class="footer">
-	        <div class="container text-center">
+	        <!-- <div class="container text-center">
 	             Freshly made with <i class="fa fa-heart heart"></i> in Lipa
-	        </div>
+	        </div> -->
 	        <div class="container text-center">
 	             For exceptional orders <a href="https://www.messenger.com/t/DalawangMilkmen" target="_blank">contact us.</a>
 	        </div>
@@ -497,17 +497,18 @@
 
 		var calculateTotal = function() {
 			totalProduct = parseFloat(unsweetened)+ parseFloat(mango)+ parseFloat(raspberry) + parseFloat(strawberry) + parseFloat(sweetened);
-			if (totalProduct < 7) {
-				$('#summay-deliveryfee').text('50');
-				$('#deliveryFree').text('👍 Order 7 or more yogurts to have a free delivery');
-
-				totalPrice = (totalProduct * yogourtPrice) + parseFloat(deliveryPrice) - (jarre*jarrePrice)
-			}else {
-				$('#summay-deliveryfee').text('free');
+			// if (totalProduct < 7) {
+			// 	$('#summay-deliveryfee').text('50');
+			// 	$('#deliveryFree').text('👍 Order 7 or more yogurts to have a free delivery');
+			//
+			// 	totalPrice = (totalProduct * yogourtPrice) + parseFloat(deliveryPrice) - (jarre*jarrePrice)
+			// }else {
+				// $('#summay-deliveryfee').text('free');
 				$('#deliveryFree').text('');
-				totalPrice = (totalProduct * yogourtPrice) - (jarre*jarrePrice)
+				totalPrice = (totalProduct * yogourtPrice) - (jarre*jarrePrice);
+				totalPrice =  totalPrice +  parseFloat(deliveryPrice);
 
-			}
+			// }
 			// console.log(totalPrice);
 			$('#summay-Price').text(totalPrice)
 
