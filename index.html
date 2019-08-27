@@ -26,12 +26,26 @@
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link href="assets/css/demo.css" rel="stylesheet" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146506084-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-146506084-1');
+	</script>
 </head>
 
 <body>
 	<style media="screen">
 		.image-container:before{
 			opacity: .4!important;
+		}
+		.no_margin{
+			margin-bottom: 0;
+			margin-top: -20px;
+			text-align: center;
 		}
 	</style>
 	<div class="image-container set-full-height" style="background-image: url('assets/img/dmm/background-dmm.jpg')">
@@ -86,11 +100,16 @@
 		                            <div class="tab-pane" id="order">
 		                            	<div class="row">
 		                                	<div class="col-sm-12">
-		                                    	<h4 class="info-text"> What would you like to order ?</h4>
+		                                    	<h4 class="info-text"> What would you like to order ? <br>
+													<span style="font-size:12px;">Minimum order 3 Yogurts</span>
+												</h4>
 
 		                                	</div>
 		                                	<div class="col-sm-2 col-sm-offset-1">
 												<img src="assets/img/dmm/20190103-Dalawang-mango.jpg" style="width:100px;height:auto;"  alt="" />
+												<p class="no_margin" >
+												 ₱ <span id="mp"></span>
+												</p>
 		                                    	<div class="form-group label-floating">
 		                                        	<label class="control-label">Mango</label>
 													<select id='stock-Mango' class="form-control">
@@ -102,6 +121,9 @@
 		                                	</div>
 		                                	<div class="col-sm-2">
 												<img src="assets/img/dmm/20190103-Dalawang-raspberry.jpg" style="width:100px;height:auto;"  alt="" />
+												<p class="no_margin" >
+												 ₱ <span id="rp"></span>
+												</p>
 		                                    	<div class="form-group label-floating">
 		                                        	<label class="control-label">Raspberry</label>
 													<select id='stock-Raspberry' class="form-control">
@@ -112,6 +134,9 @@
 		                                	</div>
 		                                	<div class="col-sm-2">
 												<img src="assets/img/dmm/20190103-Dalawang-strawberry.jpg" style="width:100px;height:auto;"  alt="" />
+												<p class="no_margin" >
+												 ₱ <span id="sp"></span>
+												</p>
 		                                    	<div class="form-group label-floating">
 		                                        	<label class="control-label">Strawberry</label>
 													<select id='stock-Strawberry' class="form-control">
@@ -123,6 +148,9 @@
 		                                	</div>
 		                                	<div class="col-sm-2">
 												<img src="assets/img/dmm/20190103-Dalawang-sweetened.jpg" style="width:100px;height:auto;"  alt="" />
+												<p class="no_margin" >
+												 ₱ <span id="swp"></span>
+												</p>
 		                                    	<div class="form-group label-floating">
 		                                        	<label class="control-label">Sweetened</label>
 													<select id='stock-Sweetened' class="form-control">
@@ -133,6 +161,9 @@
 		                                	</div>
 											<div class="col-sm-2">
 												<img src="assets/img/dmm/20190103-Dalawang-unsweetened.jpg" style="width:100px;height:auto;"  alt="" />
+												<p class="no_margin" >
+												 ₱ <span id="up"></span>
+												</p>
 		                                    	<div class="form-group label-floating">
 		                                        	<label class="control-label">Unsweetened</label>
 													<select id='stock-Unsweetened' class="form-control">
@@ -218,8 +249,8 @@
 		                                        	<label class="control-label">District name <small>(required)</small></label>
 		                                        	<select id='district' name="district"  class="form-control">
 		                                            	<option disabled="" selected=""></option>
-		                                            	<option>Makati</option>
-		                                            	<option>BGC</option>
+		                                            	<!-- <option>Makati</option>
+		                                            	<option>BGC</option> -->
 		                                        	</select>
 		                                    	</div>
 		                                    </div>
@@ -239,7 +270,7 @@
 		                                        	<select id="barangay" name="barangay" class="form-control">
 		                                    			<option disabled="" selected=""></option>
 
-		                                            	<option>Bangkal</option>
+		                                            	<!-- <option>Bangkal</option>
 		                                            	<option>Bel-Air</option>
 		                                            	<option>Carmona</option>
 		                                            	<option>Cembo</option>
@@ -270,7 +301,7 @@
 		                                            	<option>Tejeros</option>
 		                                            	<option>Urdaneta</option>
 		                                            	<option>Valenzuela</option>
-		                                            	<option>West Rembo</option>
+		                                            	<option>West Rembo</option> -->
 		                                        	</select>
 		                                    	</div>
 		                                    </div>
@@ -308,7 +339,7 @@
 		                                    <div class="col-sm-4 col-sm-offset-1">
 												<div class="form-group label-floating">
 													<!-- <label class="control-label">Dalawang Milkmen Engagement</label> -->
-													<p class="description">Good news our glass jars are endlessly recyclable ♻️ and we give 5php per returned jar & lid!</p>
+													<p class="description">Good news our glass jars are endlessly recyclable ♻️ and we give 5₱ per returned jar & lid!</p>
 												</div>
 		                                        <div class="form-group label-floating">
 		                                            <label class="control-label"># of jars to return</label>
@@ -320,28 +351,41 @@
 												<label class="control-label">Number of yogurt ordered</label>
 												<ul style="list-style: none;padding-left: 14px;">
 													<li style="color:#DEAA4E">
-														Mango : <span id="summary-Mango" style="float:right" >0</span>
+														<span style="float:left" >Mango</span>
+														<span id="summary-Mango">(x 0)</span>
+														<span id="smp"style="float:right">0</span>
 													</li>
 													<li style="color:#F17A92">
-														Strawberry :<span id="summary-Strawberry" style="float:right" >0</span>
+														<span style="float:left">Strawberry</span>
+														<span id="summary-Strawberry">(x 0)</span>
+														<span id="ssp"style="float:right">0</span>
 													 </li>
 													<li style="color:#D2373E">
-														Raspberry :<span id="summary-Raspberry" style="float:right" >0</span>
+														<span style="float:left">Raspberry</span>
+														<span id="summary-Raspberry">(x 0)</span>
+														<span id="srp"style="float:right">0</span>
 													</li>
 													<li style="color:#7B9DCF">
-														Unsweetened :<span id="summary-Unsweetened" style="float:right" >0</span>
+														<span style="float:left">Unsweetened</span>
+														<span id="summary-Unsweetened">(x 0)</span>
+														<span id="sup"style="float:right">0</span>
 													</li>
 													<li style="color:#99B9DD">
-														Sweetened : <span id="summary-Sweetened" style="float:right" >0</span>
+														<span style="float:left">Sweetened </span>
+														<span id="summary-Sweetened">(x 0)</span>
+														<span id="sswp"style="float:right">0</span>
 													</li>
 													<li>
-														Returned Jars<span id="summary-Jarre" style="float:right" >0</span>
+														<span style="float:left">Returned Jars </span>
+														<span id="summary-Jarre">(x 0)</span>
+														<span id="sjp"style="float:right">0</span>
+
 													</li>
 												</ul>
 												<hr>
 												<ul style="list-style: none;padding-left: 14px;">
-													<li>Delivery fee (php) : <span id='summay-deliveryfee' style="float:right">50</span></li>
-													<li><strong>Total Price (php) : <span id='summay-Price' style="float:right">0</span></strong></li>
+													<li>Delivery fee (₱) : <span id='summay-deliveryfee' style="float:right">50</span></li>
+													<li><strong>Total Price (₱) : <span id='summay-Price' style="float:right">0</span></strong></li>
 												</ul>
 
 
@@ -357,7 +401,7 @@
 		                                    	<div class="form-group label-floating">
 		                                            <!-- <h5 class="">Payment methode</h5>
 		                                            <p class="description">"Cash on delivery"</p> -->
-													<label class="control-label">Change for (php) :</label>
+													<label class="control-label">Change for (₱) :</label>
 													<input id='bill' class="form-control" type="text" name="bill" value="">
 		                                        </div>
 		                                    </div>
@@ -369,11 +413,12 @@
 		                        </div>
 		                        <div class="wizard-footer">
 	                            	<div class="pull-right">
-	                                    <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='Next' />
+	                                    <input type='button' class='btn btn-next btn-fill btn-info btn-wd' id='next' name='next' value='Next' />
 	                                    <input id='send' type='button' class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='Send Order' />
+	                                    <input id='loading' type='button' class='btn btn-fill btn-warning btn-wd' style="display:none;"  value='Your order is being processed' />
 	                                </div>
 	                                <div class="pull-left">
-	                                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
+	                                    <input id='previous' type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
 	                                </div>
 		                            <div class="clearfix"></div>
 		                        </div>
@@ -427,10 +472,22 @@
 	<script src="assets/js/jquery.validate.min.js"></script>
 	<script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(e) {
+
+		if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+		    alert("Sorry our orders doesn't work on Edge and Internet Explorer" );
+		}
+
+		// init variables
 		var stock;
 		var deliveryDate;
 		var deliveryPrice;
 		var yogourtPrice;
+		var mangoPrice;
+		var strawberryPrice;
+		var raspberryPrice;
+		var strawberryPrice;
+		var sweetenedPrice;
+		var unsweetenedPrice;
 		var jarrePrice;
 		var mango = '0';
 		var raspberry = '0';
@@ -440,8 +497,20 @@
 		var jarre = 0;
 		var totalProduct;
 		var totalPrice;
+		// send order
 		var send = document.getElementById('send');
+		var next = document.getElementById('next');
+		var previous = document.getElementById('previous');
+		var loading = document.getElementById('loading');
+		// Price placeholders
+		var mp = document.getElementById('mp');
+		var rp = document.getElementById('rp');
+		var sp = document.getElementById('sp');
+		var swp = document.getElementById('swp');
+		var up = document.getElementById('up');
 		var deliveryTime = document.getElementById('deliveryTime');
+		var district = document.getElementById('district');
+		var barangaySelect = document.getElementById('barangay');
 		var apiKey = "keyy91JVw4nn9lwqH";
 		var baseid = "appWeyp3UlQHHV5By";
 
@@ -467,36 +536,39 @@
 			}
 		}
 		var initTime = function(time) {
-			console.log('init time: ',time);
-			// var stock = document.getElementById('stock-'+product.fields.Name)
 
 			this.option = document.createElement('option')
 			this.option.innerText = time.fields.horraire;
 			deliveryTime.append(this.option)
 
-			// console.log(stock);
-			// if (product.fields.stock > 15) {
-			// 	for (var i = 1; i < 16; i++) {
-			// 		this.option = document.createElement('option')
-			// 		this.option.innerText = i;
-			// 		this.option.value = i;
-			// 		stock.append(this.option)
-			// 	}
-			// }else {
-			// 	// console.log( product.fields.stock);
-			// 	for (var i = 0; i < product.fields.stock; i++) {
-			// 		this.option = document.createElement('option')
-			// 		this.option.innerText = i +1;
-			// 		this.option.value = i +1;
-			// 		stock.append(this.option)
-			// 	}
-			// }
+		}
+
+		var initCities = function(city) {
+
+			this.option = document.createElement('option')
+			this.option.innerText = city.fields.Name;
+			district.append(this.option)
+
+		}
+		var initBarangay = function(barangay) {
+
+			this.option = document.createElement('option')
+			this.option.innerText = barangay.fields.Name;
+			barangaySelect.append(this.option)
+
 		}
 
 
 
 		var calculateTotal = function() {
-			totalProduct = parseFloat(unsweetened)+ parseFloat(mango)+ parseFloat(raspberry) + parseFloat(strawberry) + parseFloat(sweetened);
+			totalProduct = parseFloat(unsweetened)* unsweetenedPrice+ parseFloat(mango)*mangoPrice+ parseFloat(raspberry)*raspberryPrice + parseFloat(strawberry)*strawberryPrice + parseFloat(sweetened)*sweetenedPrice;
+
+			console.log( 'prix total :', totalProduct);
+			console.log(parseFloat(unsweetened)* unsweetenedPrice);
+			console.log(parseFloat(mango)*mangoPrice);
+			console.log(parseFloat(raspberry)*raspberryPrice);
+			console.log(parseFloat(strawberry)*strawberryPrice);
+			console.log(parseFloat(sweetened) *sweetenedPrice);
 			// if (totalProduct < 7) {
 			// 	$('#summay-deliveryfee').text('50');
 			// 	$('#deliveryFree').text('👍 Order 7 or more yogurts to have a free delivery');
@@ -505,7 +577,7 @@
 			// }else {
 				// $('#summay-deliveryfee').text('free');
 				$('#deliveryFree').text('');
-				totalPrice = (totalProduct * yogourtPrice) - (jarre*jarrePrice);
+				totalPrice = totalProduct  - (jarre*jarrePrice);
 				totalPrice =  totalPrice +  parseFloat(deliveryPrice);
 
 			// }
@@ -517,38 +589,60 @@
 		$('#stock-Mango').on('change', function() {
 			// console.log(this.value);
 			mango = this.value;
-			$('#summary-Mango').text(this.value);
+			$('#summary-Mango').text(' ( x '+this.value+')');
+			$('#smp').text( parseFloat(this.value) * mangoPrice);
 			calculateTotal();
 
 		});
 		$('#stock-Raspberry').on('change', function() {
 			raspberry = this.value;
-			$('#summary-Raspberry').text(this.value);
+			$('#summary-Raspberry').text(' ( x '+this.value+')');
+			$('#srp').text( parseFloat(this.value) * raspberryPrice);
+
 			calculateTotal();
 		});
 		$('#stock-Strawberry').on('change', function() {
 			strawberry = this.value;
-			$('#summary-Strawberry').text(this.value);
+			$('#summary-Strawberry').text(' ( x '+this.value+')');
+			$('#ssp').text( parseFloat(this.value) * strawberryPrice);
 			calculateTotal();
 		});
 		$('#stock-Unsweetened').on('change', function() {
 			unsweetened = this.value;
-			$('#summary-Unsweetened').text(this.value);
+			$('#summary-Unsweetened').text(' ( x '+this.value+')');
+			$('#sup').text( parseFloat(this.value) * unsweetenedPrice);
 			calculateTotal();
 		});
 		$('#stock-Sweetened').on('change', function() {
 			sweetened = this.value;
-			$('#summary-Sweetened').text(this.value);
+			$('#summary-Sweetened').text(' ( x '+this.value+')');
+			$('#sswp').text( parseFloat(this.value) * sweetenedPrice);
 			calculateTotal();
 		});
 		$('#jarrenb').on('change', function() {
 			jarre = this.value;
-			$('#summary-Jarre').text(this.value);
+			$('#summary-Jarre').text(' ( x '+this.value+')');
+			$('#sjp').text('-' + parseFloat(this.value) * jarrePrice);
 			calculateTotal();
 		});
 
-		send.addEventListener('click',function () {
-			sendOrder();
+		next.addEventListener('click',function (e) {
+			if (totalProduct < 240) {
+				alert('Sorry, the minimum order is 3 yogurts ')
+				e.preventDefault();
+				$('#previous').click();
+			}
+		});
+
+		send.addEventListener('click',function (e) {
+			if (totalProduct < 240) {
+				alert('Sorry, the minimum order is 3 yogurts ')
+			}else {
+				send.style.display = 'none';
+				loading.style.display = 'block';
+				sendOrder();
+
+			}
 		});
 
 
@@ -745,6 +839,56 @@
 			});
 
 		}
+		fetchCities = () =>{
+
+
+			let url = 'https://api.airtable.com/v0/'+baseid+'/cities?maxRecords=10&view=Grid%20view'
+
+
+			fetch(url,{
+			   method: 'get',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey,
+			}),
+			})
+			.then((response) => response.json())
+			.then((cities) => {
+				cities = cities.records;
+				console.log(cities);
+
+				for (var i = 0; i < cities.length; i++) {
+					initCities(cities[i]);
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		}
+		fetchBarangay = () =>{
+			let url = 'https://api.airtable.com/v0/'+baseid+'/barangay?maxRecords=200&view=Grid%20view'
+
+
+			fetch(url,{
+			   method: 'get',
+			   headers: new Headers({
+				 'Authorization': 'Bearer '+apiKey,
+			}),
+			})
+			.then((response) => response.json())
+			.then((barangay) => {
+				barangay = barangay.records;
+				console.log(barangay);
+
+				for (var i = 0; i < barangay.length; i++) {
+					initBarangay(barangay[i]);
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		}
 		fetchInfo = () =>{
 
 			let url = 'https://api.airtable.com/v0/'+baseid+'/Info?maxRecords=10&view=Grid%20view'
@@ -758,7 +902,7 @@
 			})
 			.then((response) => response.json())
 			.then((delivery) => {
-				// console.log(delivery.records)
+				console.log(delivery.records)
 				// console.log(delivery.records[0].fields.Date);
 				document.getElementById('nextDelivery').innerText = delivery.records[0].fields.info;
 				document.getElementById('datedelivery').innerText = delivery.records[0].fields.info;
@@ -766,8 +910,18 @@
 				yogourtPrice = delivery.records[1].fields.info;
 				jarrePrice = delivery.records[2].fields.info;
 				deliveryPrice = delivery.records[3].fields.info;
+				mangoPrice = delivery.records[4].fields.info;
+				strawberryPrice = delivery.records[5].fields.info;
+				raspberryPrice = delivery.records[6].fields.info;
+				sweetenedPrice = delivery.records[7].fields.info;
+				unsweetenedPrice = delivery.records[8].fields.info;
 
-				// console.log(deliveryDate ,yogourtPrice, jarrePrice);
+				mp.innerText = mangoPrice;
+				rp.innerText = raspberryPrice;
+				sp.innerText = strawberryPrice;
+				swp.innerText = sweetenedPrice;
+				up.innerText = unsweetenedPrice;
+				// console.log(unsweetenedPrice ,raspberryPrice, mangoPrice);
 				// localStorage.setItem('areas', JSON.stringify(product.records));
 
 				// for (var i = 0; i < stock.length; i++) {
@@ -782,6 +936,8 @@
 
 		fetchProduct();
 		fetchInfo();
+		fetchCities();
+		fetchBarangay();
 		fetchDeliveryTime();
 
 
