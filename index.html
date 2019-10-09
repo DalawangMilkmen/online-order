@@ -45,11 +45,11 @@
 	t.src=v;s=b.getElementsByTagName(e)[0];
 	s.parentNode.insertBefore(t,s)}(window,document,'script',
 	'https://connect.facebook.net/en_US/fbevents.js');
-	 fbq('init', '2426810227642657'); 
+	 fbq('init', '2426810227642657');
 	fbq('track', 'PageView');
 	</script>
 	<noscript>
-	 <img height="1" width="1" 
+	 <img height="1" width="1"
 	src="https://www.facebook.com/tr?id=2426810227642657&ev=PageView
 	&noscript=1"/>
 	</noscript>
@@ -101,9 +101,8 @@
 		                        		Dalawang Milkmen Deliveries
 		                        	</h3>
 									<h5>🗓 Next delivery date: <strong><span style='' id='nextDelivery'></span></strong></h5>
-									<p style="text-align:center">
-										<br>
-										We currently deliver 🛵 only in Makati and BGC 😁
+									<p style="text-align:center" id="tagline">
+
 									</p>
 		                    	</div>
 								<div class="wizard-navigation">
@@ -573,9 +572,19 @@
 
 			this.option = document.createElement('option')
 			this.option.innerText = barangay.fields.Name;
+			this.option.setAttribute('value',barangay.fields.DeliveryFees);
 			barangaySelect.append(this.option)
 
+
 		}
+
+		$('#barangay').on('change',function(){
+	        var optionValue = $(this).val();
+			deliveryPrice = optionValue;
+			console.log(deliveryPrice);
+			calculateTotal();
+			$('#summay-deliveryfee').text(deliveryPrice);
+    	});
 
 
 
@@ -597,6 +606,7 @@
 				// $('#summay-deliveryfee').text('free');
 				$('#deliveryFree').text('');
 				totalPrice = totalProduct  - (jarre*jarrePrice);
+				console.log('total delivery fee',deliveryPrice);
 				totalPrice =  totalPrice +  parseFloat(deliveryPrice);
 
 			// }
@@ -679,7 +689,7 @@
 			var deliveryTimeselect = document.getElementById("deliveryTime");
 			var deliveryTime = deliveryTimeselect.options[deliveryTimeselect.selectedIndex].value;
 			var barangayselect = document.getElementById("barangay");
-			var barangay = barangayselect.options[barangayselect.selectedIndex].value;
+			var barangay = barangayselect.options[barangayselect.selectedIndex].text;
 			var districtselect = document.getElementById("district");
 			var district = districtselect.options[districtselect.selectedIndex].value;
 			var street = document.querySelectorAll('input[name$="street"]')[0].value;
@@ -708,6 +718,7 @@
 							"Delivery Date": deliveryDate,
 							"Change for": bill,
 							"Floor / Unit / Room#": floor ,
+							"deliveryfee" : deliveryPrice,
 					  	}
 					}
 
@@ -924,6 +935,7 @@
 				console.log(delivery.records)
 				// console.log(delivery.records[0].fields.Date);
 				document.getElementById('nextDelivery').innerText = delivery.records[0].fields.info;
+				document.getElementById('tagline').innerHTML = '<br>'+ delivery.records[9].fields.info;
 				document.getElementById('datedelivery').innerText = delivery.records[0].fields.info;
 				deliveryDate = delivery.records[0].fields.info;
 				yogourtPrice = delivery.records[1].fields.info;
